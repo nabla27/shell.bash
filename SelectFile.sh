@@ -2,8 +2,16 @@
 #### Discription #####################################################################
 #This is a file to select by entering only one key.
 #
-#I show Usage of this file below.
+#Excution method
 # >>>$ bash SelectFile.sh "param1" "param2"
+#
+#Key operation
+# w : move cursor up.
+# s : move cursor down.
+# a,q : return to parent directory or deselect a file.
+# p : show all files. show hidden file.
+# [ : move cursor to the page above.
+# ] : move cursor to the page below.
 #
 #You can specify some parameters.
 #I show each parameters function.
