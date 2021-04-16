@@ -1,18 +1,19 @@
 #!/bin/bash
 #### Discription #####################################################################
 #This is a file to select by entering only one key.
-#
+
 #Excution method
 # >>>$ bash SelectFile.sh "param1" "param2"
-#
+
 #Key operation
 # w : move cursor up.
 # s : move cursor down.
+# d : select the file.
 # a,q : return to parent directory or deselect a file.
 # p : show all files. show hidden file.
 # [ : move cursor to the page above.
 # ] : move cursor to the page below.
-#
+
 #You can specify some parameters.
 #I show each parameters function.
 # 1 : return full path of selected file.
@@ -22,7 +23,7 @@
 #I show examples of executing method below.
 # >>>$ bash SelectFile.sh 1
 # >>>$ bash SelectFile.sh 2 3
-#
+
 #The following initial values can be changed arbitrarily.
 C_path="\e[33;4m"	#The color of current path displayed above.
 C_link="\e[35m"		#The color of hyper link file.
