@@ -1,12 +1,34 @@
 #!/bin/bash
-
+#### Discription #####################################################################
+#This is a file to select by entering only one key.
+#
+#I show Usage of this file below.
+# >>>$ bash SelectFile.sh "param1" "param2"
+#
+#You can specify some parameters.
+#I show each parameters function.
+# 1 : return full path of selected file.
+# 2 : return name of selected file.
+# 3 : return file type of selected file. h/hyperlink f/normal file d/directory
+#If you do not specify any parameters, cannot get anything.
+#I show examples of executing method below.
+# >>>$ bash SelectFile.sh 1
+# >>>$ bash SelectFile.sh 2 3
+#
+#The following initial values can be changed arbitrarily.
+C_path="\e[33;4m"	#The color of current path displayed above.
+C_link="\e[35m"		#The color of hyper link file.
+C_dir="\e[36m"		#The color of directory file.
+C_norf="\e[37m"		#The color of normal file.
+blockNum=10		#The number of showing file on display.
+######################################################################################
+#Initial parameter. Do not change below.
 mode="SelectFile"
 tf_allfile="False"; tf_selected="False"
-C_path="\e[33m"; C_link="\e[33m"; C_dir="\e[33m"; C_norf="\e[33m"
 Cend="\e[m"
-num=1; s_num=1; block=0; blockNum=10
+num=1; s_num=1; block=0;
 text[1]=""; text[2]=""
-
+######################################################################################
 while [ $mode = "SelectFile" ]
 do
 	c_path=`pwd`
@@ -17,7 +39,7 @@ do
 	echo "${text[1]}"
 	echo "${text[2]}"
 	echo "${text[3]}"
-	echo "debug: num=$num numMax=$numMax"
+#	echo "debug: num=$num numMax=$numMax"
 	echo "__________________________________________________"
 	IFS_BACKUP=$IFS
 	IFS=$'\n'
@@ -26,7 +48,7 @@ do
 		for file_name in `ls`
 		do
 			if [ $tmp -ge $((block*blockNum)) -a $tmp -le $(((block+1)*blockNum)) ]; then
-			if [ $num -eq $tmp -a $tf_selected = "False" ]; then prin="→"; selected_file="${file_name}"
+			if [ $num -eq $tmp ]; then prin="→"; selected_file="${file_name}"
 			else prin="  "; fi
 
 			if [ -h "${c_path}/${file_name}" ]; then
@@ -45,7 +67,7 @@ do
 		tmp=1
 		for file_name in `ls -A`
 		do
-			if [ $num -eq $tmp -a $tf_selected = "False" ]; then prin="→"; selected_file="${file_name}"
+			if [ $num -eq $tmp ]; then prin="→"; selected_file="${file_name}"
 			else prin="  "; fi
 
 			if [ -h "${c_path}/${file_name}" ]; then 
